@@ -1,0 +1,8 @@
+packaging
+ordered_set
+jaraco.functools
+jaraco.text
+langdetect==1.0.9
+pick==2.2.0
+Requests==2.30.0
+requests_toolbelt==1.0.0
