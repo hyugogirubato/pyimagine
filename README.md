@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./doc/logo.png" width="10%">
+<img src="./docs/logo.png" width="10%">
 
 **pyImagine**
 
