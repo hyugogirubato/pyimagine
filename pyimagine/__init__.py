@@ -290,4 +290,4 @@ class Imagine:
         ).content
 
 
-__version__ = "6.2.4"
+__version__ = "2.6.4"
