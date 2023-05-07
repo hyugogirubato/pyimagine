@@ -32,10 +32,10 @@ You now have the `pyimagine` package installed.
 ### From Source Code
 
 The following steps are instructions on download, preparing, and running the code under a Venv environment.
-You can skip steps 3-5 with a simple `pip install .` call instead, but you miss out on a wide array of benefits.
+You can skip steps 3-5 with a simple `python setup.py install` call instead, but you miss out on a wide array of benefits.
 
-1. `git clone https://github.com/hyugogirubato/pyimagine`
-2. `cd pyimagine`
+1. `git clone https://github.com/hyugogirubato/pyImagine`
+2. `cd pyImagine`
 3. `python -m venv env`  
 4. `source env/bin/activate`   
 5. `python setup.py install`
@@ -50,7 +50,7 @@ See [Venv's Docs] on various ways of making calls under the virtual-environment.
 
 ## Usage
 
-The following is a minimal example of using pyimagine in a script. It gets the generated image
+The following is a minimal example of using pyImagine in a script. It gets the generated image
 from the text and increases the quality.
 
 ```python
