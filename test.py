@@ -1,13 +1,64 @@
+import os
+from enum import Enum
+from pathlib import Path
+
+import pyimagine
 from pyimagine import Imagine, Style, Ratio
+from pick import pick
+
+FILE = "imagine.jpeg"
+
+
+class Mode(Enum):
+    MANUAL = "manual"
+    AUTOMATIC = "automatic"
+
+
+class Upscale(Enum):
+    NO = False
+    YES = True
+
 
 if __name__ == "__main__":
     imagine = Imagine()
 
-    img_data = imagine.sdprem(
-        prompt="Woman sitting on a table, looking at the sky, seen from behind",
-        style=Style.ANIME_V2,
-        ratio=Ratio.RATIO_16X9
-    )
+    option, index = pick([mode.name for mode in list(Mode)], "Mode:")
+    usr_mode = Mode[option]
 
-    img_data = imagine.upscale(image=img_data)
-    open("example.jpeg", mode="wb").write(img_data)
+    if usr_mode == Mode.MANUAL:
+        usr_prompt = input("Prompt: ")
+    else:
+        path_image = Path(input("Image: "))
+        if not path_image.exists() and not path_image.is_file():
+            raise Exception(f"Error: File path is invalid, {path_image}")
+        usr_prompt = imagine.interrogator(image=open(path_image, mode="rb").read())
+
+    usr_negative = input("Negative: ")
+
+    option, index = pick([style.name for style in list(Style)], "Style:")
+    usr_style = Style[option]
+
+    option, index = pick([ratio.name for ratio in list(Ratio)], "Ratio:")
+    usr_ratio = Ratio[option]
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"I: pyImage version {pyimagine.__version__}")
+    print(f"I: Prompt: {usr_prompt}")
+    print(f"I: Negative: {usr_negative}")
+    print(f"I: Style: {usr_style.name}")
+    print(f"I: Ratio: {usr_ratio.name}")
+
+    img_data = imagine.sdprem(
+        prompt=usr_prompt,
+        negative=usr_negative,
+        style=usr_style,
+        ratio=usr_ratio
+    )
+    open(FILE, mode="wb").write(img_data)
+    option, index = pick([upscale.name for upscale in list(Upscale)], "Upscale:")
+    usr_upscale = Upscale[option]
+
+    print(f"I: Upscale: {usr_upscale.name}")
+    if usr_upscale.value:
+        img_data = imagine.upscale(image=img_data)
+        open(FILE, mode="wb").write(img_data)
