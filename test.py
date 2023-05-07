@@ -42,7 +42,7 @@ if __name__ == "__main__":
     usr_ratio = Ratio[option]
 
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"I: pyImage version {pyimagine.__version__}")
+    print(f"I: pyImagine version {pyimagine.__version__}")
     print(f"I: Prompt: {usr_prompt}")
     print(f"I: Negative: {usr_negative}")
     print(f"I: Style: {usr_style.name}")
