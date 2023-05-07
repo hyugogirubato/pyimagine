@@ -6,6 +6,7 @@
 
 <img src="https://img.shields.io/badge/python-3.7+-informational?style=plastic" alt="Python version">
 <img src="https://img.shields.io/github/release-date/hyugogirubato/pyImagine?style=plastic" alt="Release">
+<img src="https://img.shields.io/github/release/hyugogirubato/pyImagine?style=plastic" alt="Version">
 </div>
 
 ## Features
