@@ -9,12 +9,12 @@
 </div>
 
 ## Features
-- Turn words into art
-- Choose from an array of art styles
-- Adjust your masterpiece with creative controls!
-- Stay ahead of the game with the ever-growing art library!
-- Generate wallpapers
-- Discover and explore similar artistic designs
+- 🎨 Turn words into art
+- 👓 Choose from an array of art styles
+- 🔧 Adjust your masterpiece with creative controls!
+- 📦 Stay ahead of the game with the ever-growing art library!
+- 🌇 Generate wallpapers
+- 🔎 Discover and explore similar artistic designs 
 
 
 ## Installation
