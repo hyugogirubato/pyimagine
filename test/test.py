@@ -3,10 +3,10 @@ from enum import Enum
 from pathlib import Path
 
 import pyimagine
-from pyimagine import Imagine, Style, Ratio
+from pyimagine.constants import Style, Ratio
 from pick import pick
 
-FILE = "imagine.jpeg"
+FILE = Path(__file__).resolve().parent / "imagine.png"
 
 
 class Mode(Enum):
@@ -20,7 +20,7 @@ class Upscale(Enum):
 
 
 if __name__ == "__main__":
-    imagine = Imagine()
+    imagine = pyimagine.Imagine(restricted=True)
 
     option, index = pick([mode.name for mode in list(Mode)], "Mode:")
     usr_mode = Mode[option]
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         path_image = Path(input("Image: "))
         if not path_image.exists() and not path_image.is_file():
             raise Exception(f"Error: File path is invalid, {path_image}")
-        usr_prompt = imagine.interrogator(image=open(path_image, mode="rb").read())
+        usr_prompt = imagine.interrogator(content=open(path_image, mode="rb").read())
 
     usr_negative = input("Negative: ")
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     usr_ratio = Ratio[option]
 
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"I: pyImagine version {pyimagine.__version__}")
+    print(f"I: PyImagine version {pyimagine.__version__}")
     print(f"I: Prompt: {usr_prompt}")
     print(f"I: Negative: {usr_negative}")
     print(f"I: Style: {usr_style.name}")
@@ -54,11 +54,12 @@ if __name__ == "__main__":
         style=usr_style,
         ratio=usr_ratio
     )
-    open(FILE, mode="wb").write(img_data)
+
+    FILE.write_bytes(img_data)
     option, index = pick([upscale.name for upscale in list(Upscale)], "Upscale:")
     usr_upscale = Upscale[option]
 
     print(f"I: Upscale: {usr_upscale.name}")
     if usr_upscale.value:
-        img_data = imagine.upscale(image=img_data)
-        open(FILE, mode="wb").write(img_data)
+        img_data = imagine.upscale(content=img_data)
+        FILE.write_bytes(img_data)

@@ -13,7 +13,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Face correction.
 - Detect prompt errors before execution.
 - Added inspiration.
-- Request timeout (15s).
+- Request timeout (60s).
 
 ### Fixed
 

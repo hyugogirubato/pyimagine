@@ -55,7 +55,7 @@ class Imagine:
             url=kwargs.get("url"),
             data=data,
             headers=headers,
-            timeout=15
+            timeout=60
         )
         r.raise_for_status()
         return r
