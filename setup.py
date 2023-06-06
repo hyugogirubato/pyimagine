@@ -1,30 +1,39 @@
-"""Setup module"""
-
-from setuptools import setup
-
-with open("README.md", mode="r", encoding="utf-8") as f:
-    LONG_DESCRIPTION = f.read()
+from setuptools import setup, find_packages
 
 setup(
     name="pyimagine",
-    version="2.6.4",
-    description="Python library to create Art with AI.",
-    long_description=LONG_DESCRIPTION,
-    long_description_content_type="text/markdown",
-    url="https://github.com/hyugogirubato/pyimagine",
+    version="2.7.0",
     author="hyugogirubato",
     author_email="hyugogirubato@gmail.com",
-    license="GNU GPLv3",
-    packages=["pyimagine"],
-    install_requires=["requests", "langdetect", "requests-toolbelt"],
+    description="Python library for AI-powered image manipulation.",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/hyugogirubato/pyimagine",
+    packages=find_packages(),
+    license="GPL-3.0-only",
+    keywords=[
+        "art",
+        "image",
+        "ai",
+        "stable-diffusion"
+    ],
     classifiers=[
-        "Environment :: Console",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Intended Audience :: End Users/Desktop",
+        "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Utilities"
-    ]
+    ],
+    install_requires=[
+        "requests",
+        "Pillow",
+        "langdetect"
+    ],
+    python_requires=">=3.7"
 )
