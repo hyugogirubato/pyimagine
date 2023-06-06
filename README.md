@@ -50,7 +50,7 @@ upscaled_image = imagine.upscale(original_image)
 ````
 
 For more information on how to use PyImagine, please refer to
-the [documentation](https://github.com/hyugogirubato/pyimagine/blob/main/docs).
+the [documentation](https://github.com/hyugogirubato/pyimagine/tree/main/docs).
 
 ### Exceptions
 
