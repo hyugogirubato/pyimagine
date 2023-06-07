@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyimagine",
-    version="2.7.0",
+    version="2.7.1",
     author="hyugogirubato",
     author_email="hyugogirubato@gmail.com",
     description="Python library for AI-powered image manipulation.",

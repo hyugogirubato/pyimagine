@@ -45,3 +45,9 @@ def get_word(value: str) -> str:
         i = random.randint(0, size)
         chars.insert(i + 1, chars[i])
     return "".join(chars)
+
+
+def same_size(src1: bytes, src2: bytes) -> bool:
+    width1, height1 = Image.open(BytesIO(src1)).size
+    width2, height2 = Image.open(BytesIO(src2)).size
+    return width1 == width2 and height1 == height2

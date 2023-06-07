@@ -37,7 +37,7 @@ from pyimagine.constants import Inspiration
 imagine = Imagine()
 
 # Generate an inspired image
-inspired_image = imagine.inspire(Inspiration.INSPIRATION_01)
+inspired_image = imagine.sdinsp(Inspiration.INSPIRATION_01)
 
 # Variate an image
 original_image = open("image.jpg", "rb").read()
@@ -59,6 +59,7 @@ The following exceptions can be raised by PyImagine:
 - `InvalidWord`: Raised when a banned word is found in the prompt. By default, if the `restricted` flag is set to `True`
   during initialization, the library will raise an `InvalidWord` exception. You can customize this behavior by setting
   `restricted` to `False` to replace banned words with alternative words instead of raising an exception.
+- `InvalidSize`: Raised when attempting to perform an operation that requires both images to have the same size.
 
 ### License
 

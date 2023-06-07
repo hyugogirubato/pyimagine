@@ -8,8 +8,8 @@ from requests import Response
 from requests_toolbelt import MultipartEncoder
 
 from pyimagine.constants import Style, Inspiration, Ratio, Mode, BANNED_WORDS
-from pyimagine.exceptions import InvalidWord
-from pyimagine.utils import bytes2png, clear_dict, get_cfg, get_word
+from pyimagine.exceptions import InvalidWord, InvalidSize
+from pyimagine.utils import bytes2png, clear_dict, get_cfg, get_word, same_size
 
 
 class DeviantArt(Enum):
@@ -64,7 +64,7 @@ class Imagine:
         href = item.value[2 if isinstance(item, Style) else 1]
         return bytes2png(self._request(method="GET", url=f"{self.cdn}/{href}").content)
 
-    def inspire(self, inspiration: Inspiration = Inspiration.INSPIRATION_01) -> bytes:
+    def sdinsp(self, inspiration: Inspiration = Inspiration.INSPIRATION_01) -> bytes:
         """Inspiration"""
         return self.sdprem(
             prompt=inspiration.value[0],
@@ -157,12 +157,17 @@ class Imagine:
     def sdimg(
             self,
             content: bytes,
+            mask: bytes,
             prompt: str,
             negative: str = None,
             seed: int = None,
-            cfg: float = 9.5
+            cfg: float = 9.5,
+            priority: bool = True
     ) -> bytes:
         """Inpainting"""
+        if not same_size(content, mask):
+            raise InvalidSize("Mask size must be same as image size.")
+
         return bytes2png(self._request(
             method="POST",
             url=f"{self.api}/sdimg",
@@ -172,7 +177,9 @@ class Imagine:
                 "negative_prompt": negative,
                 "seed": seed,
                 "cfg": get_cfg(cfg),
-                "image": ("bitmap_final_edit.jpg", content, "image/jpg")
+                "image": ("bitmap_final_edit.jpg", content, "image/jpg"),
+                "mask": ("bitmap_final_edit.jpg", mask, "image/jpg"),
+                "priority": int(priority)
             }
         ).content)
 

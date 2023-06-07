@@ -35,10 +35,10 @@ if __name__ == "__main__":
 
     usr_negative = input("Negative: ")
 
-    option, index = pick([style.name for style in list(Style)], "Style:")
+    option, _ = pick([style.name for style in list(Style)], "Style:")
     usr_style = Style[option]
 
-    option, index = pick([ratio.name for ratio in list(Ratio)], "Ratio:")
+    option, _ = pick([ratio.name for ratio in list(Ratio)], "Ratio:")
     usr_ratio = Ratio[option]
 
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -52,7 +52,8 @@ if __name__ == "__main__":
         prompt=usr_prompt,
         negative=usr_negative,
         style=usr_style,
-        ratio=usr_ratio
+        ratio=usr_ratio,
+        high_result=True
     )
 
     FILE.write_bytes(img_data)
