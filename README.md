@@ -1,8 +1,15 @@
+<div align="center">
+
+<img src="https://github.com/hyugogirubato/pyimagine/blob/main/docs/images/icon.png" width="10%">
+
 # PyImagine
 
 [![License](https://img.shields.io/github/license/hyugogirubato/pyimagine)](https://github.com/hyugogirubato/pyimagine/blob/main/LICENSE)
 [![Release](https://img.shields.io/github/release-date/hyugogirubato/pyimagine)](https://github.com/hyugogirubato/pyimagine/releases)
 [![Latest Version](https://img.shields.io/pypi/v/pyimagine)](https://pypi.org/project/pyimagine/)
+
+</div>
+
 
 PyImagine is a Python library for AI-powered image manipulation. It provides a simple interface to interact with an
 image manipulation service, allowing you to perform various operations on images.
@@ -60,6 +67,12 @@ The following exceptions can be raised by PyImagine:
   during initialization, the library will raise an `InvalidWord` exception. You can customize this behavior by setting
   `restricted` to `False` to replace banned words with alternative words instead of raising an exception.
 - `InvalidSize`: Raised when attempting to perform an operation that requires both images to have the same size.
+
+## Disclaimer
+
+PyImagine is an unofficial library and is not affiliated with or endorsed by Imagine or Vyroai. The library is
+provided "as is" without any warranty, and the usage of this library is at your own risk. Make sure to comply with the
+terms and conditions of the Imagine service while using this library.
 
 ### License
 
