@@ -27,7 +27,7 @@ class Imagine:
 
     def _request(self, **kwargs) -> Response:
         headers = {"accept": "*/*", "user-agent": "okhttp/4.10.0"}
-        headers.update(kwargs.get("headers", None) or {})
+        headers.update(kwargs.get("headers") or {})
 
         data = clear_dict(kwargs.get("data"))
         if data:
