@@ -4,7 +4,7 @@ from pathlib import Path
 
 import requests
 
-CERT = "AF1F2F0293ABE91D3EEC64BBD91ECA70643CF311"
+CERT = "6873DBEDAF8A5FCC9A0207C6F5FDF20119A338E3"
 PACKAGE = "com.vyroai.aiart"
 KEY = "AIzaSyBqheNjCmckFZsc8btvjLzsI_mS5Iw20OQ"
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
         method="POST",
         url="https://firebaseinstallations.googleapis.com/v1/projects/imagine-5d4e5/installations",
         json={
-            "fid": "c9JbZUtWROmcmyPKFNhsgE",
+            "fid": "dXKSUXVTQGOmjwLYYR8VmJ",
             "appId": "1:47152938399:android:928f1ecf0490a9b76611aa",
             "authVersion": "FIS_v2",
             "sdkVersion": "a:17.1.3"
@@ -53,8 +53,8 @@ if __name__ == "__main__":
         method="POST",
         url="https://firebaseremoteconfig.googleapis.com/v1/projects/47152938399/namespaces/firebase:fetch",
         json={
-            "appInstanceId": "c9JbZUtWROmcmyPKFNhsgE",
-            "appVersion": "2.7.3",
+            "appInstanceId": "dXKSUXVTQGOmjwLYYR8VmJ",
+            "appVersion": "2.8.2",
             "countryCode": "US",
             "analyticsUserProperties": {},
             "appId": "1:47152938399:android:928f1ecf0490a9b76611aa",
@@ -64,7 +64,7 @@ if __name__ == "__main__":
             "packageName": "com.vyroai.aiart",
             "appInstanceIdToken": token,
             "languageCode": "en-US",
-            "appBuild": "148"
+            "appBuild": "171"
         }
     )
     r.raise_for_status()
@@ -106,10 +106,21 @@ if __name__ == "__main__":
         model.append(f'\tRATIO_{ratio[0]}X{ratio[1]} = "{item["ratio"]}"')
     model.append("\n")
 
+    # Model
+    model.append("# KEY = (model_id, name, thumb)")
+    model.append("class Model(Enum):")
+    for item in json.loads(content["text_to_image_models"]):
+        key = get_key(item["name"])
+        item.pop("id", None)
+        item.pop("isPremium", None)
+        item.pop("hdr_toggle", None)
+        model.append(f"\t{key} = {tuple(item.values())}")
+    model.append("\n")
+
     # Style
     model.append("# KEY = (style_id, style_name, style_thumb, init_prompt)")
     model.append("class Style(Enum):")
-    for item in json.loads(content["styles_v2"]):
+    for item in json.loads(content["text_to_image_styles"]):
         key = get_key(item["style_name"])
         item.pop("id", None)
         item.pop("isPremium", None)

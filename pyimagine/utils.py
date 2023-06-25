@@ -22,7 +22,13 @@ def clear_dict(value: dict) -> dict:
 
 def get_cfg(value: float) -> float:
     if value < 0.0 or value > 16.0:
-        raise Exception(f"Invalid CFG, must be in range (0; 16), {value}")
+        raise ValueError(f"Invalid CFG, must be in range (0; 16), {value}")
+    return value
+
+
+def get_steps(value: int) -> int:
+    if value < 0 or value > 50:
+        raise ValueError(f"Invalid steps, must be in range (0; 50), {value}")
     return value
 
 

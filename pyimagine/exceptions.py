@@ -8,3 +8,7 @@ class InvalidWord(PyImagineException):
 
 class InvalidSize(PyImagineException):
     """Both sizes must be the same."""
+
+
+class BannedContent(PyImagineException):
+    """Content wanting to be generated is banned."""
