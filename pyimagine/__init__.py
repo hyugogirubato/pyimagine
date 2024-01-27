@@ -1,3 +1,3 @@
-from .vyroai import Imagine, DeviantArt
+from pyimagine.aiby import Arta
 
-__version__ = "2.7.5"
+__version__ = '3.3.8'

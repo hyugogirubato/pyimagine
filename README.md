@@ -37,21 +37,19 @@ pip install pyimagine
 Here's a basic example of how to use PyImagine:
 
 ````python
-from pyimagine import Imagine
-from pyimagine.constants import Inspiration
+from pyimagine import Arta
+from pyimagine.constants import Style
 
 # Initialize Imagine
-imagine = Imagine()
+arta = Arta()
+arta.signupNewUser()
 
-# Generate an inspired image
-inspired_image = imagine.sdinsp(Inspiration.INSPIRATION_01)
+# Generate from inspiration
+inspired_image = arta.infer(prompt="Create something amazing!", style=Style.REALISTIC_2)
 
-# Variate an image
-original_image = open("image.jpg", "rb").read()
-variated_image = imagine.variate(original_image, prompt="Create something amazing!")
-
-# Upscale an image
-upscaled_image = imagine.upscale(original_image)
+# Prompt from image
+original_image = open('image.jpg', 'rb').read()
+prompt_image = arta.image2text(original_image, language_code='en')
 
 # And more...
 ````
@@ -59,20 +57,11 @@ upscaled_image = imagine.upscale(original_image)
 For more information on how to use PyImagine, please refer to
 the [documentation](https://github.com/hyugogirubato/pyimagine/blob/main/docs).
 
-### Exceptions
-
-The following exceptions can be raised by PyImagine:
-
-- `InvalidWord`: Raised when a banned word is found in the prompt. By default, if the `restricted` flag is set to `True`
-  during initialization, the library will raise an `InvalidWord` exception. You can customize this behavior by setting
-  `restricted` to `False` to replace banned words with alternative words instead of raising an exception.
-- `InvalidSize`: Raised when attempting to perform an operation that requires both images to have the same size.
-
 ## Disclaimer
 
-PyImagine is an unofficial library and is not affiliated with or endorsed by Imagine or Vyroai. The library is
-provided "as is" without any warranty, and the usage of this library is at your own risk. Make sure to comply with the
-terms and conditions of the Imagine service while using this library.
+PyImagine is an unofficial library and is not affiliated with or endorsed by Vyroai or Aiby. The library is provided "as
+is" without any warranty, and the usage of this library is at your own risk. Make sure to comply with the terms and
+conditions of the Imagine service while using this library.
 
 ### License
 
